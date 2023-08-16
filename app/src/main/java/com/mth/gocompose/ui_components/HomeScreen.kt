@@ -30,8 +30,10 @@ fun HomeScreen(navController: NavController, modifier: Modifier = Modifier) {
         mutableStateOf(false)
     }
     if (isShowedSheet) {
-        ModalBottomSheet(dynamicContent = { SheetContent() })
-        isShowedSheet = false
+        ModalBottomSheet{
+            isShowedSheet = false
+        }
+
 
     }
     Column(

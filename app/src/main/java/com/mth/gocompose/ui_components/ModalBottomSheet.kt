@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ModalBottomSheet(modifier: Modifier = Modifier, onDismiss: () -> Unit = {},dynamicContent: @Composable () -> Unit) {
+fun ModalBottomSheet(modifier: Modifier = Modifier, onDismiss: () -> Unit = {}) {
 
     val skipPartiallyExpanded by remember {
         mutableStateOf(false)
@@ -45,8 +45,7 @@ fun ModalBottomSheet(modifier: Modifier = Modifier, onDismiss: () -> Unit = {},d
         onDismissRequest = { onDismiss() },
         sheetState = bottomSheetState,
     ) {
-        dynamicContent.invoke()
-        //SheetContent()
+        SheetContent()
     }
 
 }
@@ -137,7 +136,7 @@ fun SheetContent(modifier: Modifier = Modifier) {
 @Composable
 fun ModelSheetPreview() {
     Column(modifier = Modifier.fillMaxSize()) {
-        ModalBottomSheet(dynamicContent = {})
+        ModalBottomSheet()
     }
 
 
